@@ -68,3 +68,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+#### 基本要点
+- ES6 小知识
+```
+let obj = {a:{b:1}}
+const {a} = obj; // 传统解构赋值
+const {a:{b}} = obj; // 连续解构赋值
+const {a:{b: value}} = obj // 连续解构赋值 + 重命名
+```
+
+- 消息订阅与发布
+1、 先订阅在发布，是一种对话的设计思想；与消息中间件的设计思想略微有些差异，消息中间件给人的设计感觉可以解决高并发大批量的对话，设计更加全面和复杂，前端的消息订阅与发布，设计思路更偏向于简单的人与人之间对话，更加简单、简洁。
+2、对话完成后便可以在 componentWillUnmount 中取消订阅 
+3、React18 严格模式下的componentDidMount会重复执行两次（在开发环境中），可以在组件包围外侧去掉 <React.StrictMode> 即可
+
+- fetch 发送请求
+除了XHR以外，前端的另外一种处理http请求的方式，但是一些老版本的浏览器不支持

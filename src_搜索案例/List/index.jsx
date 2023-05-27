@@ -12,21 +12,18 @@ export default class index extends Component {
 
     componentDidMount(){
         // 初始化操作-订阅
-        this.token = PubSub.subscribe("my_topic",(msg, stateObj)=>{
-            this.setState(stateObj)
+        PubSub.subscribe("my_topic",(msg, data)=>{
+            console.log(data)
         })
-    }
 
-    componentWillUnmount(){
-        PubSub.unsubscribe(this.token)
     }
 
     // saveUsers = (users)=>{
     //   this.setState({users})
     // }
-    // updateAppState = (stateObj) =>{
-    //     this.setState(stateObj)
-    // }
+    updateAppState = (stateObj) =>{
+        this.setState(stateObj)
+    }
 
     render() {
         const {users, isFirst, isLoading, err} = this.state
